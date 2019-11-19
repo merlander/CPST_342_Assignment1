@@ -8,6 +8,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="`anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
+    <script src="https://kit.fontawesome.com/d51f220ce9.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
@@ -60,31 +61,81 @@
                 <label for="formControlRange">Please Rate Your Experience:</label>
                 <div class="form-row">
                     <span class="col-1 text-right">1</span>
-                    <input type="range" class="form-control-range col-10 mx-auto" id="formControlRange" data-slider-min="0"
+                    <input type="range" class="form-control-range col-10 mx-auto" id="formControlRange"
+                           data-slider-min="0"
                            data-slider-max="10" data-slider-step="1" data-slider-value="10">
                     <span class="col-1 text-left">10</span>
                 </div>
-                <input class="btn btn-primary mt-2" type="submit" value="Submit">
+                <input class="btn btn-primary mt-2" type="button" value="Submit" aria-label="Send Email"
+                       data-toggle="modal" data-target="#confirm-email">
+            </div>
+            <div class="modal fade" id="confirm-email" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content text-dark">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Confirm Sending</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to send the email?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" value="submit" class="btn btn-primary" data-dismiss="modal"><i
+                                    class="fas fa-envelope fa-fw"></i>Yes
+                            </button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
+        <div class="alert alert-success collapse clearfix" role="alert" id="successAlert">
+            <p class="float-left">Your email has been sent.</p>
+            <button type="button" class="close float-right" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="alert alert-danger collapse clearfix" role="alert" id="cancelAlert">
+            <p class="float-left">Your email has not been sent.</p>
+            <button type="button" class="close float-right" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
     </main>
 </div>
-<footer class="row pt-4 mt-3 border-top text-light">
-    <div class="col-12 col-md pl-5">
-        <p>© 2018 Michael Erlander</p>
-        <img class="mb-2" src="assets/images/icons8-dali-48.png" alt="dali" width="24" height="24">
-        <a target="_blank" href="https://icons8.com/icons/set/dali">Dali icon</a> by
-        <a target="_blank"
-           href="https://icons8.com">Icons8</a>
-    </div>
-    <div class="col-6 col-md text-right pr-5">
-        <h5>Navigation</h5>
-        <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="index.html">About</a></li>
-            <li><a class="text-muted" href="portfolio.html">Portfolio</a></li>
-            <li><a class="text-muted" href="#">Contact</a></li>
-        </ul>
-    </div>
-</footer>
+<div class="container-fluid">
+    <footer class="row pt-4 mt-5 border-top text-light">
+        <div class="col-12 col-md pl-5">
+            <p>© 2018 Michael Erlander</p>
+            <img class="mb-2" src="assets/images/icons8-dali-48.png" alt="dali" width="24" height="24">
+            <a target="_blank" href="https://icons8.com/icons/set/dali">Dali icon</a> by
+            <a target="_blank"
+               href="https://icons8.com">Icons8</a>
+        </div>
+        <div class="col-6 col-md text-right pr-5">
+            <h5>Navigation</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="index.html">About</a></li>
+                <li><a class="text-muted" href="portfolio.html">Portfolio</a></li>
+                <li><a class="text-muted" href="#">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+</div>
 </body>
 </html>
+<script>
+    $("#confirm-email .btn-default").click(function () {
+        $("#cancelAlert").show();
+    });
+    $('#confirm-email .btn-primary').click(function () {
+        $('#contactForm').submit();
+        $("#successAlert").show();
+    });
+    $('.alert .close').click(function () {
+        $(this).parent().hide();
+    });
+</script>

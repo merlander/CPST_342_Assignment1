@@ -1,4 +1,4 @@
-$font-stack: Roboto, Helvetica Neue, Arial, sans-serif;
+$font-stack: Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
 $view-height: 100%;
 $bg-color: #343a40;
 
@@ -28,7 +28,7 @@ body {
   }
 
   .card {
-    & img {
+    img {
       width: auto;
       max-height: 10rem;
     }
@@ -74,7 +74,7 @@ body {
 
     .flip-box-back {
       background-color: $bg-color;
-      color: white;
+      color: oldlace;
       transform: rotateY(180deg);
     }
   }

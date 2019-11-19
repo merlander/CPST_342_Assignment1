@@ -3,7 +3,7 @@ html, body {
 }
 
 body {
-  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+  font-family: Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
   display: flex;
   flex-direction: column;
   padding-top: 10vh;
@@ -58,7 +58,7 @@ body .flip-box .flip-box-front {
 }
 body .flip-box .flip-box-back {
   background-color: #343a40;
-  color: white;
+  color: oldlace;
   transform: rotateY(180deg);
 }
 body footer {
