@@ -3,36 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <title>Michael Erlander</title>
+    <link rel="icon" href="assets/images/icons8-dali-48.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="`anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 </head>
 <body>
-<header>
-    <a href="index.html">About</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="#">Contact</a>
-</header>
-<p>Have any questions, comments, or concerns? Fill out the form below, and I will get back to you as soon as I can.
-    Thanks!</p>
-<form id="contactForm" action="mailto:michael.r.erlander@gmail.com?subject=Portfolio Contact Form" method="POST"
-      enctype="text/plain">
-    <p>First name:</p>
-    <input type="text" name="firstName" id="firstName" required>
-    <p>Last name:</p>
-    <input type="text" name="lastName" id="lastName" required>
-    <p>Email:</p>
-    <input type="text" name="email" id="email" required>
-    <p>Message:</p>
-    <textarea name="contact" id="contact" placeholder="Message..."></textarea>
-    <br>
-    <input type="submit" value="Submit">
-</form>
-<footer>
-    <p>© 2018 Michael Erlander
-    <ul>
-        <li><a href="index.html">About</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="#">Contact</a></li>
-    </ul>
-    </p>
+<div class="content">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">ME</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="portfolio.html">Portfolio</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main class="container text-light">
+        <h5>Have any questions, comments, or concerns? Fill out the form below, and I will get back to you as soon as I
+            can.
+            Thanks!</h5>
+        <form id="contactForm" action="mailto:michael.r.erlander@gmail.com?subject=Portfolio Contact Form" method="POST"
+              enctype="text/plain">
+            <div class="form-group">
+                <label for="firstName">First name:</label>
+                <input type="text" class="form-control" name="firstName" id="firstName" required>
+                <label for="lastName">Last name:</label>
+                <input type="text" class="form-control" name="lastName" id="lastName" required>
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" name="email" id="email" required>
+                <label for="phone">Phone # (optional):</label>
+                <input type="phone" class="form-control" name="phone" id="phone">
+                <label for="contact">Message (optional):</label>
+                <textarea class="form-control" name="contact" id="contact" placeholder="Message..."></textarea>
+                <label for="formControlRange">Please Rate Your Experience:</label>
+                <div class="form-row">
+                    <span class="col-1 text-right">1</span>
+                    <input type="range" class="form-control-range col-10 mx-auto" id="formControlRange" data-slider-min="0"
+                           data-slider-max="10" data-slider-step="1" data-slider-value="10">
+                    <span class="col-1 text-left">10</span>
+                </div>
+                <input class="btn btn-primary mt-2" type="submit" value="Submit">
+            </div>
+        </form>
+    </main>
+</div>
+<footer class="row pt-4 mt-3 border-top text-light">
+    <div class="col-12 col-md pl-5">
+        <p>© 2018 Michael Erlander</p>
+        <img class="mb-2" src="assets/images/icons8-dali-48.png" alt="dali" width="24" height="24">
+        <a target="_blank" href="https://icons8.com/icons/set/dali">Dali icon</a> by
+        <a target="_blank"
+           href="https://icons8.com">Icons8</a>
+    </div>
+    <div class="col-6 col-md text-right pr-5">
+        <h5>Navigation</h5>
+        <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="index.html">About</a></li>
+            <li><a class="text-muted" href="portfolio.html">Portfolio</a></li>
+            <li><a class="text-muted" href="#">Contact</a></li>
+        </ul>
+    </div>
 </footer>
 </body>
 </html>

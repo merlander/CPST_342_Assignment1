@@ -1,0 +1,69 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10vh;
+  background: url(images/congruent_outline.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+body .jumbotron {
+  background-image: url(images/eore.png);
+  background-size: cover;
+  height: 451px;
+}
+body .content {
+  flex: 1 0 auto;
+}
+body .card img {
+  width: auto;
+  max-height: 10rem;
+}
+body .flip-box {
+  background-color: transparent;
+  height: 23rem;
+  width: 30rem;
+  perspective: 1000px;
+}
+body .flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}
+body .flip-box img {
+  width: 100%;
+  height: 100%;
+}
+body .flip-box .flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+body .flip-box .flip-box-front, body .flip-box .flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+body .flip-box .flip-box-front {
+  background-color: #bbb;
+  color: black;
+}
+body .flip-box .flip-box-back {
+  background-color: #343a40;
+  color: white;
+  transform: rotateY(180deg);
+}
+body footer {
+  background-color: #343a40;
+  flex-shrink: 0;
+}
+
+/*# sourceMappingURL=style.css.map */

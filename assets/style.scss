@@ -1,0 +1,91 @@
+$font-stack: Roboto, Helvetica Neue, Arial, sans-serif;
+$view-height: 100%;
+$bg-color: #343a40;
+
+html, body {
+  height: $view-height;
+}
+
+body {
+  font-family: $font-stack;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10vh;
+  background: url(images/congruent_outline.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+
+  .jumbotron {
+    background-image: url(images/eore.png);
+    background-size: cover;
+    height: 451px;
+  }
+
+  .content {
+    flex: 1 0 auto;
+  }
+
+  .card {
+    & img {
+      width: auto;
+      max-height: 10rem;
+    }
+  }
+
+  .flip-box {
+    background-color: transparent;
+    height: 23rem;
+    width: 30rem;
+    perspective: 1000px;
+
+    &:hover {
+      .flip-box-inner {
+        transform: rotateY(180deg);
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .flip-box-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-box-front, .flip-box-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+    }
+
+    .flip-box-front {
+      background-color: #bbb;
+      color: black;
+    }
+
+    .flip-box-back {
+      background-color: $bg-color;
+      color: white;
+      transform: rotateY(180deg);
+    }
+  }
+
+  footer {
+    background-color: $bg-color;
+    flex-shrink: 0;
+  }
+
+}
+
+
+
+
