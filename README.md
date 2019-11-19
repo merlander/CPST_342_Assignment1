@@ -1,2 +1,6 @@
-# CPST342-assignment1
-First class assignment
+# CPST342-assignments
+First class assignment: create simple html page with no styling.
+
+### current
+Second class assignment: refactor page using Bootstrap and Sass. 
+
