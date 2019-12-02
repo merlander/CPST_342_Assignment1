@@ -1,4 +1,7 @@
-window.addEventListener('load', e => {
+import 'bootstrap';
+const moment = require('moment');
+
+window.addEventListener('load', () => {
     const form = document.getElementById('contactForm');
     const time = moment().format();
     console.log(time);
@@ -6,7 +9,7 @@ window.addEventListener('load', e => {
     console.log(page);
 
     // Used if fetch is an option, which it is not with FormSubmit.co
-
+    /*
     const method = form.getAttribute('method');
     const action = form.getAttribute('action');
     const submitForm = async () => {
@@ -18,7 +21,7 @@ window.addEventListener('load', e => {
             data: formInfo
         });
     };
-
+    */
 
     const formToJSON = elements => [].reduce.call(elements, (data, element) => {
         data[element.name] = element.value;
@@ -63,7 +66,7 @@ window.addEventListener('load', e => {
         $('[data-toggle="tooltip"]').tooltip()
     });
 
-    alertCloseButtonListeners = (() => {
+    const alertCloseButtonListeners = (() => {
         const closeButtons = document.getElementsByClassName('closeAlert');
         Array.from(closeButtons).forEach(function (element) {
             element.addEventListener('click', e => {
@@ -73,7 +76,41 @@ window.addEventListener('load', e => {
     })();
 
     if (page == '/CPST_342_Assignments/portfolio.html') {
-        $('.carousel').carousel()
+        $('.carousel').carousel();
+
+        $("#personal1").click(function(){
+            $("#carouselPersonal").carousel(0);
+        });
+        $("#personal2").click(function(){
+            $("#carouselPersonal").carousel(1);
+        });
+        $("#personal3").click(function(){
+            $("#carouselPersonal").carousel(2);
+        });
+
+        $("#personalPrev").click(function(){
+            $("#carouselPersonal").carousel("prev");
+        });
+        $("#personalNext").click(function(){
+            $("#carouselPersonal").carousel("next");
+        });
+
+        $("#school1").click(function(){
+            $("#carouselSchool").carousel(0);
+        });
+        $("#school2").click(function(){
+            $("#carouselSchool").carousel(1);
+        });
+        $("#school3").click(function(){
+            $("#carouselSchool").carousel(2);
+        });
+
+        $("#schoolPrev").click(function(){
+            $("#carouselSchool").carousel("prev");
+        });
+        $("#schoolNext").click(function(){
+            $("#carouselSchool").carousel("next");
+        });
     }
 
     if (page == '/CPST_342_Assignments/contact.html') {
@@ -83,7 +120,6 @@ window.addEventListener('load', e => {
             //const formInfo = new FormData(form)
             const data = formToJSON(form.elements);
             //Using ajax only because FormSubmit doesn't work with fetch and the options that do all cost money
-            /*
             $.ajax({
                 url: 'https://formsubmit.co/ajax/c06fc327d69cbbc9443d13152dea2d5d',
                 method: 'POST',
@@ -97,7 +133,7 @@ window.addEventListener('load', e => {
                 document.getElementById('cancelAlert').classList.remove("d-none");
             });
             // Original fetch submit, FormSubmit sends a blank email
-            */
+            /*
             submitForm().then((response) => {
                 console.log(response.text());
                 $('#confirm-email').modal('hide');
@@ -112,7 +148,7 @@ window.addEventListener('load', e => {
                 $('#confirm-email').modal('hide');
                 document.getElementById('cancelAlert').classList.remove("d-none");
             });
-
+            */
         });
 
         document.getElementById('cancelbtn').addEventListener('click', e => {

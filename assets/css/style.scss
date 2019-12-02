@@ -1,3 +1,4 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
 $font-stack: Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
 $view-height: 100%;
 $bg-color: #343a40;
@@ -11,14 +12,14 @@ body {
   display: flex;
   flex-direction: column;
   padding-top: 10vh;
-  background: url(../images/congruent_outline.png) no-repeat center center fixed;
+  background: url(../assets/images/congruent_outline.png) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
 
   .jumbotron {
-    background-image: url(../images/eore.png);
+    background-image: url(../assets/images/eore.png);
     background-size: cover;
     height: 451px;
   }
