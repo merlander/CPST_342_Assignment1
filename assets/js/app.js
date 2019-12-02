@@ -6,7 +6,7 @@ window.addEventListener('load', e => {
     console.log(page);
 
     // Used if fetch is an option, which it is not with FormSubmit.co
-    /*
+
     const method = form.getAttribute('method');
     const action = form.getAttribute('action');
     const submitForm = async () => {
@@ -18,7 +18,7 @@ window.addEventListener('load', e => {
             data: formInfo
         });
     };
-     */
+
 
     const formToJSON = elements => [].reduce.call(elements, (data, element) => {
         data[element.name] = element.value;
@@ -83,6 +83,7 @@ window.addEventListener('load', e => {
             //const formInfo = new FormData(form)
             const data = formToJSON(form.elements);
             //Using ajax only because FormSubmit doesn't work with fetch and the options that do all cost money
+            /*
             $.ajax({
                 url: 'https://formsubmit.co/ajax/c06fc327d69cbbc9443d13152dea2d5d',
                 method: 'POST',
@@ -96,9 +97,9 @@ window.addEventListener('load', e => {
                 document.getElementById('cancelAlert').classList.remove("d-none");
             });
             // Original fetch submit, FormSubmit sends a blank email
-            /*
+            */
             submitForm().then((response) => {
-                console.log(response);
+                console.log(response.text());
                 $('#confirm-email').modal('hide');
                 if (response.status == '200') {
                     document.getElementById('successAlert').classList.remove("d-none");
@@ -111,7 +112,7 @@ window.addEventListener('load', e => {
                 $('#confirm-email').modal('hide');
                 document.getElementById('cancelAlert').classList.remove("d-none");
             });
-             */
+
         });
 
         document.getElementById('cancelbtn').addEventListener('click', e => {
