@@ -72,11 +72,11 @@ window.addEventListener('load', e => {
         });
     })();
 
-    if (page == '/CPST_342_Assignment1/portfolio.html') {
+    if (page == '/CPST_342_Assignments/portfolio.html') {
         $('.carousel').carousel()
     }
 
-    if (page == '/CPST_342_Assignment1/contact.html') {
+    if (page == '/CPST_342_Assignments/contact.html') {
         form.addEventListener('submit', e => {
             e.preventDefault();
             //unused fetch FormData
