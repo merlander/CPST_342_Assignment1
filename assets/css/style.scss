@@ -18,12 +18,21 @@ body {
   background-size: cover;
   -o-background-size: cover;
 
+  label, #no-storage, #tracking-table_info {
+    color: #f8f9fa;
+  }
+
   .jumbotron {
     background-image: url(../assets/images/eore.png);
     background-size: cover;
     height: 451px;
   }
 
+  .vertical-center {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
   .content {
     flex: 1 0 auto;
   }

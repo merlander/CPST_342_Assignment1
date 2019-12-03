@@ -12,7 +12,7 @@
 <body>
 <div class="content">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">ME</a>
+        <a class="navbar-brand" href="index.html">ME</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -28,6 +28,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Contact</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="tracking.html">Tracking</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -36,15 +39,15 @@
             can.
             Thanks!</h5>
         <!--"https://formspree.io/xvogogyr" -->
-        <form id="contactForm" action="https://formsubmit.co/ajax/c06fc327d69cbbc9443d13152dea2d5d" method="POST"
+        <form id="contact-form" action="https://formsubmit.co/ajax/c06fc327d69cbbc9443d13152dea2d5d" method="POST"
               enctype="multipart/form-data">
             <div class="form-group needs-validation">
                 <input type="hidden" name="_captcha" value="false">
-                <label for="firstName">First name:</label>
-                <input type="text" class="form-control" name="firstName" id="firstName" data-toggle="tooltip"
+                <label for="first-name">First name:</label>
+                <input type="text" class="form-control" name="firstName" id="first-name" data-toggle="tooltip"
                        data-placement="top" title="Please enter your first name" required>
-                <label for="lastName">Last name:</label>
-                <input type="text" class="form-control" name="lastName" id="lastName" data-toggle="tooltip"
+                <label for="last-name">Last name:</label>
+                <input type="text" class="form-control" name="lastName" id="last-name" data-toggle="tooltip"
                        data-placement="top" title="Please enter your last name" required>
                 <label for="email">Email:</label>
                 <input type="email" class="form-control" name="email" id="email" data-toggle="tooltip"
@@ -58,15 +61,15 @@
                 <textarea class="form-control" name="message" id="message" placeholder="Message..."
                           data-toggle="tooltip"
                           data-placement="top" title="Please leave a brief message"></textarea>
-                <label for="formControlRange">Please Rate Your Experience:</label>
+                <label for="form-control-range">Please Rate Your Experience:</label>
                 <div class="form-row">
                     <span class="col-1 text-right">1</span>
-                    <input type="range" class="form-control-range col-10 mx-auto" name="rating" id="formControlRange"
+                    <input type="range" class="form-control-range col-10 mx-auto" name="rating" id="form-control-range"
                            data-slider-min="0"
                            data-slider-max="10" data-slider-step="1" data-slider-value="10">
                     <span class="col-1 text-left">10</span>
                 </div>
-                <button type="button" id="sendbtn" class="btn btn-primary mt-2"
+                <button type="button" id="send-btn" class="btn btn-primary mt-2"
                         aria-label="Send Email">Send
                 </button>
             </div>
@@ -76,7 +79,7 @@
                     <div class="modal-content text-dark">
                         <div class="modal-header">
                             <h5 class="modal-title">Confirm Sending</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" id="modal-close-btn" class="close" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -84,24 +87,24 @@
                             <p>Are you sure you want to send the email?</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" value="Submit" id="submitbtn" class="btn btn-primary"><i
+                            <button type="submit" value="Submit" id="submit-btn" class="btn btn-primary"><i
                                     class="fas fa-envelope fa-fw"></i>Yes
                             </button>
-                            <button type="button" id="cancelbtn" class="btn btn-default">No</button>
+                            <button type="button" id="cancel-btn" class="btn btn-default">No</button>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
-        <div class="alert alert-success d-none clearfix" role="alert" id="successAlert">
+        <div class="alert alert-success d-none clearfix" role="alert" id="success-alert">
             <p class="float-left">Your email has been sent.</p>
-            <button type="button" id="confirmButton" class="close float-right closeAlert" aria-label="Close">
+            <button type="button" id="confirm-button" class="close float-right close-alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="alert alert-danger d-none clearfix" role="alert" id="cancelAlert">
+        <div class="alert alert-danger d-none clearfix" role="alert" id="cancel-alert">
             <p class="float-left">Your email has not been sent.</p>
-            <button type="button" id="cancelButton" class="close float-right closeAlert" aria-label="Close">
+            <button type="button" id="cancel-button" class="close float-right close-alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
@@ -122,6 +125,7 @@
                 <li><a class="text-muted" href="index.html">About</a></li>
                 <li><a class="text-muted" href="portfolio.html">Portfolio</a></li>
                 <li><a class="text-muted" href="#">Contact</a></li>
+                <li><a class="text-muted" href="tracking.html">Tracking</a></li>
             </ul>
         </div>
     </footer>

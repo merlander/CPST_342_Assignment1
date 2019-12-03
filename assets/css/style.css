@@ -9890,10 +9890,18 @@ body {
   background-size: cover;
   -o-background-size: cover;
 }
+body label, body #no-storage, body #tracking-table_info {
+  color: #f8f9fa;
+}
 body .jumbotron {
   background-image: url(../assets/images/eore.png);
   background-size: cover;
   height: 451px;
+}
+body .vertical-center {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 body .content {
   flex: 1 0 auto;

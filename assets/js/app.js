@@ -1,57 +1,86 @@
 import 'bootstrap';
 const moment = require('moment');
+window.$ = require('jquery');
+const dt = require('datatables.net');
+window.$.DataTable = dt;
+import 'datatables.net-bs4';
+
+let time = moment().format();
+let page = window.location.pathname;
 
 window.addEventListener('load', () => {
-    const form = document.getElementById('contactForm');
-    const time = moment().format();
-    console.log(time);
-    const page = window.location.pathname;
-    console.log(page);
 
-    // Used if fetch is an option, which it is not with FormSubmit.co
-    /*
-    const method = form.getAttribute('method');
-    const action = form.getAttribute('action');
-    const submitForm = async () => {
-        const formInfo = new FormData(form)
-        console.log(...formInfo);
-        return await fetch(action, {
-            method,
-            mode: 'cors',
-            data: formInfo
-        });
-    };
-    */
+    if (!localStorage.getItem('pagesAndTimes')) {
+        localStorage.setItem('pagesAndTimes', JSON.stringify({'page': page.substr(22), 'time': time}));
+    } else {
+        const timeArr = [];
+        let currentStorage = JSON.parse(localStorage.getItem('pagesAndTimes'));
+        if (currentStorage.constructor === Array) {
+            currentStorage.forEach(item => {
+                timeArr.push(item)
+            });
+        } else {
+            timeArr.push(currentStorage);
+        }
+        time = moment().format();
+        page = window.location.pathname;
+        timeArr.push({'page': page.substr(22), 'time': time});
+        localStorage.setItem('pagesAndTimes', JSON.stringify(timeArr));
+    }
 
     const formToJSON = elements => [].reduce.call(elements, (data, element) => {
         data[element.name] = element.value;
         return data;
     }, {});
 
+    /*
+    const serialize = (obj) => {
+        let str = [];
+        for (let p in obj)
+            if (obj.hasOwnProperty(p)) {
+                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+            }
+        return str.join("&");
+    };
+     */
+
+    const closeButtonListeners = () => {
+        const closeButtons = document.getElementsByClassName('close-alert');
+        const modalClose = document.getElementById('modal-close-btn');
+        Array.from(closeButtons).forEach(function (element) {
+            element.addEventListener('click', e => {
+                element.parentElement.classList.add('d-none');
+            });
+        });
+        modalClose.addEventListener('click', e => {
+            $('#confirm-email').modal('hide');
+        });
+    };
+
     const checkValidation = () => {
         let valid = true;
 
-        if (document.getElementById('firstName').value.trim() == "") {
-            let element = document.getElementById('firstName');
+        if (document.getElementById('first-name').value.trim() === "") {
+            let element = document.getElementById('first-name');
             element.style.backgroundColor = 'mistyrose';
             element.style.border = '1px solid red';
-            $('#firstName').tooltip('show');
+            $('#first-name').tooltip('show');
             valid = false;
         }
-        if (document.getElementById('lastName').value.trim() == "") {
-            let element = document.getElementById('lastName');
+        if (document.getElementById('last-name').value.trim() === "") {
+            let element = document.getElementById('last-name');
             element.style.backgroundColor = 'mistyrose';
             element.style.border = '1px solid red';
-            $('#lastName').tooltip('show');
+            $('#last-name').tooltip('show');
             valid = false;
         }
-        if (document.getElementById('email').value.trim() == "") {
+        if (document.getElementById('email').value.trim() === "") {
             let element = document.getElementById('email');
             element.style.backgroundColor = 'mistyrose';
             element.style.border = '1px solid red';
             $('#email').tooltip('show');
             valid = false;
-        } else if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('email').value.trim()) == false) {
+        } else if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('email').value.trim()) === false) {
             let element = document.getElementById('email');
             element.style.backgroundColor = 'mistyrose';
             element.style.border = '1px solid red';
@@ -62,123 +91,149 @@ window.addEventListener('load', () => {
         return valid;
     };
 
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    });
+    const clearTracking = () => {
+        const button = document.getElementById('clear-btn');
+        const clearDiv = document.getElementById('no-storage');
+        const table = document.getElementById('table-wrapper');
+        table.classList.add('d-none');
+        button.classList.add('d-none');
+        clearDiv.classList.remove('d-none');
+    }
 
-    const alertCloseButtonListeners = (() => {
-        const closeButtons = document.getElementsByClassName('closeAlert');
-        Array.from(closeButtons).forEach(function (element) {
-            element.addEventListener('click', e => {
-                element.parentElement.classList.add('d-none');
-            });
-        });
-    })();
-
-    if (page == '/CPST_342_Assignments/portfolio.html') {
+    if (page === '/CPST_342_Assignments/portfolio.html') {
         $('.carousel').carousel();
 
-        $("#personal1").click(function(){
-            $("#carouselPersonal").carousel(0);
+        $("#personal-1").click(function () {
+            $("#carousel-personal").carousel(0);
         });
-        $("#personal2").click(function(){
-            $("#carouselPersonal").carousel(1);
+        $("#personal-2").click(function () {
+            $("#carousel-personal").carousel(1);
         });
-        $("#personal3").click(function(){
-            $("#carouselPersonal").carousel(2);
-        });
-
-        $("#personalPrev").click(function(){
-            $("#carouselPersonal").carousel("prev");
-        });
-        $("#personalNext").click(function(){
-            $("#carouselPersonal").carousel("next");
+        $("#personal-3").click(function () {
+            $("#carousel-personal").carousel(2);
         });
 
-        $("#school1").click(function(){
-            $("#carouselSchool").carousel(0);
+        $("#personal-prev").click(function () {
+            $("#carousel-personal").carousel("prev");
         });
-        $("#school2").click(function(){
-            $("#carouselSchool").carousel(1);
-        });
-        $("#school3").click(function(){
-            $("#carouselSchool").carousel(2);
+        $("#personal-next").click(function () {
+            $("#carousel-personal").carousel("next");
         });
 
-        $("#schoolPrev").click(function(){
-            $("#carouselSchool").carousel("prev");
+        $("#school-1").click(function () {
+            $("#carousel-school").carousel(0);
         });
-        $("#schoolNext").click(function(){
-            $("#carouselSchool").carousel("next");
+        $("#school-2").click(function () {
+            $("#carousel-school").carousel(1);
+        });
+        $("#school-3").click(function () {
+            $("#carousel-school").carousel(2);
+        });
+
+        $("#school-prev").click(function () {
+            $("#carousel-school").carousel("prev");
+        });
+        $("#school-next").click(function () {
+            $("#carousel-school").carousel("next");
         });
     }
 
-    if (page == '/CPST_342_Assignments/contact.html') {
+    if (page === '/CPST_342_Assignments/contact.html') {
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+
+        const form = document.getElementById('contact-form');
+        //const method = form.getAttribute('method');
+        //const action = form.getAttribute('action');
+
+        closeButtonListeners();
+        /*
+        // Used if fetch is an option, which I cannot get to work with FormSubmit.co
+        const submitForm = async () => {
+            //different formats attempted with fetch
+            const formInfo = new FormData(form);
+            const formJSON = formToJSON(form.elements);
+            const paramJSON = serialize(formJSON);
+            console.log('forminfo');
+            console.log(...formInfo);
+            console.log('formjson');
+            console.log(JSON.stringify(formJSON));
+            console.log('paramjson');
+            console.log(paramJSON);
+            return await fetch(action, {
+                method,
+                mode: 'cors',
+                body: formJSON,
+            });
+        };
+        */
+
         form.addEventListener('submit', e => {
             e.preventDefault();
-            //unused fetch FormData
-            //const formInfo = new FormData(form)
             const data = formToJSON(form.elements);
-            //Using ajax only because FormSubmit doesn't work with fetch and the options that do all cost money
+
+            //Using ajax because I can't get FormSubmit to work with fetch
             $.ajax({
                 url: 'https://formsubmit.co/ajax/c06fc327d69cbbc9443d13152dea2d5d',
                 method: 'POST',
                 data: data
             }).done(() => {
                 $('#confirm-email').modal('hide');
-                document.getElementById('successAlert').classList.remove("d-none");
+                document.getElementById('success-alert').classList.remove("d-none");
                 form.reset();
             }).fail(() => {
                 $('#confirm-email').modal('hide');
-                document.getElementById('cancelAlert').classList.remove("d-none");
+                document.getElementById('cancel-alert').classList.remove("d-none");
             });
-            // Original fetch submit, FormSubmit sends a blank email
+
             /*
+            //Original fetch submit, FormSubmit sends a blank email
             submitForm().then((response) => {
                 console.log(response.text());
                 $('#confirm-email').modal('hide');
                 if (response.status == '200') {
-                    document.getElementById('successAlert').classList.remove("d-none");
+                    document.getElementById('success-alert').classList.remove("d-none");
                 } else {
-                    document.getElementById('cancelAlert').classList.remove("d-none");
+                    document.getElementById('cancel-alert').classList.remove("d-none");
                 }
             }).catch((err) => {
                 alert("Something went wrong, please try again.");
                 console.log(err);
                 $('#confirm-email').modal('hide');
-                document.getElementById('cancelAlert').classList.remove("d-none");
+                document.getElementById('cancel-alert').classList.remove("d-none");
             });
             */
         });
 
-        document.getElementById('cancelbtn').addEventListener('click', e => {
+        document.getElementById('cancel-btn').addEventListener('click', e => {
             $('#confirm-email').modal('hide');
-            document.getElementById('cancelAlert').classList.remove("d-none");
+            document.getElementById('cancel-alert').classList.remove("d-none");
         });
 
-        document.getElementById('contactForm').addEventListener('keypress', e => {
-            if (e.keyCode == 13) {
+        document.getElementById('contact-form').addEventListener('keypress', e => {
+            if (e.keyCode === 13) {
                 e.preventDefault();
-                if (checkValidation() == true) {
+                if (checkValidation() === true) {
                     form.submit();
                 }
             }
         });
 
-        document.getElementById('sendbtn').addEventListener('click', e => {
-            if (checkValidation() == true) {
+        document.getElementById('send-btn').addEventListener('click', e => {
+            if (checkValidation() === true) {
                 $('#confirm-email').modal('show');
             }
         });
 
-        document.getElementById('firstName').addEventListener('keyup', e => {
-            let element = document.getElementById('firstName');
+        document.getElementById('first-name').addEventListener('keyup', e => {
+            let element = document.getElementById('first-name');
             element.style.backgroundColor = 'white';
             element.style.border = 'none';
         });
 
-        document.getElementById('lastName').addEventListener('keyup', e => {
-            let element = document.getElementById('lastName');
+        document.getElementById('last-name').addEventListener('keyup', e => {
+            let element = document.getElementById('last-name');
             element.style.backgroundColor = 'white';
             element.style.border = 'none';
         });
@@ -187,6 +242,49 @@ window.addEventListener('load', () => {
             let element = document.getElementById('email');
             element.style.backgroundColor = 'white';
             element.style.border = 'none';
+        });
+    }
+
+    if (page === '/CPST_342_Assignments/tracking.html') {
+
+        $(document).ready( function () {
+            $('#tracking-table').DataTable();
+            if (localStorage.getItem('pagesAndTimes')){
+                const table = document.getElementById('table-wrapper');
+                const button = document.getElementById('clear-btn');
+                const clearDiv = document.getElementById('no-storage');
+                clearDiv.classList.add('d-none');
+                table.classList.remove('d-none');
+                table.classList.remove('d-none');
+                button.classList.remove('d-none');
+            }
+        } );
+
+        let tableBody = document.getElementById('time-table');
+        let currentStorage = JSON.parse(localStorage.getItem('pagesAndTimes'));
+        const storageArr = [];
+        if (currentStorage.constructor === Array) {
+            currentStorage.forEach(item => {
+                storageArr.push(item)
+            });
+        } else {
+            storageArr.push(currentStorage);
+        }
+        storageArr.map(item => {
+            let tr = document.createElement('tr');
+            let tdPage = document.createElement('td');
+            let tdTime = document.createElement('td');
+            tdPage.innerText = item.page;
+            tdTime.innerText = item.time;
+            tr.appendChild(tdPage);
+            tr.appendChild(tdTime);
+            tableBody.appendChild(tr);
+
+        });
+
+        document.getElementById('clear-btn').addEventListener('click', e => {
+            localStorage.clear();
+            clearTracking();
         });
     }
 

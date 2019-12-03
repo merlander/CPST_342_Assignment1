@@ -11,7 +11,7 @@
 <body>
 <div class="content">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">ME</a>
+        <a class="navbar-brand" href="index.html">ME</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -27,6 +27,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contact</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="tracking.html">Tracking</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -38,14 +41,9 @@
                 <article>
                     <h2>School</h2>
                     <div class="bd-example">
-                        <div id="carouselSchool" class="carousel slide">
-<!--                            <ol class="carousel-indicators">-->
-<!--                                <li data-target="#carouselSchool" data-slide-to="0" class="active"></li>-->
-<!--                                <li data-target="#carouselSchool" data-slide-to="1"></li>-->
-<!--                                <li data-target="#carouselSchool" data-slide-to="2"></li>-->
-<!--                            </ol>-->
+                        <div id="carousel-school" class="carousel slide">
                             <div class="carousel-inner">
-                                <div class="carousel-item active" id="school1">
+                                <div class="carousel-item active" id="school-1">
                                     <img src="assets/images/groupdin.png" class="d-block w-100" alt="GroupD&#299n">
                                     <div class="carousel-caption d-none d-md-block bg-secondary">
                                         <h5>GroupD&#299n</h5>
@@ -56,7 +54,7 @@
                                             a traditional backend.</p>
                                     </div>
                                 </div>
-                                <div class="carousel-item" id="school2">
+                                <div class="carousel-item" id="school-2">
                                     <img src="assets/images/flourish.png" class="d-block w-100" alt="Flourish">
                                     <div class="carousel-caption d-none d-md-block bg-secondary">
                                         <h5>Flourish</h5>
@@ -65,7 +63,7 @@
                                             NoSQL database.</p>
                                     </div>
                                 </div>
-                                <div class="carousel-item" id="school3">
+                                <div class="carousel-item" id="school-3">
                                     <img src="assets/images/nyt.png" class="d-block w-100" alt="NYT article scraper">
                                     <div class="carousel-caption d-none d-md-block bg-secondary">
                                         <h5>New York Times Article Search</h5>
@@ -74,11 +72,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <a class="carousel-control-prev" id="schoolPrev" href="#carouselSchool" role="button">
+                            <a class="carousel-control-prev" id="school-prev" href="#carousel-school" role="button">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>
                             </a>
-                            <a class="carousel-control-next" id="schoolNext" href="#carouselSchool" role="button">
+                            <a class="carousel-control-next" id="school-next" href="#carousel-school" role="button">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
                             </a>
@@ -90,14 +88,9 @@
                 <article>
                     <h2>Personal</h2>
                     <div class="bd-example">
-                        <div id="carouselPersonal" class="carousel slide">
-<!--                            <ol class="carousel-indicators">-->
-<!--                                <li data-target="#carouselPersonal" data-slide-to="0" class="active"></li>-->
-<!--                                <li data-target="#carouselPersonal" data-slide-to="1"></li>-->
-<!--                                <li data-target="#carouselPersonal" data-slide-to="2"></li>-->
-<!--                            </ol>-->
+                        <div id="carousel-personal" class="carousel slide">
                             <div class="carousel-inner">
-                                <div class="carousel-item active" id="personal1">
+                                <div class="carousel-item active" id="personal-1">
                                     <img src="https://dummyimage.com/1080x515/000/fff.png" class="d-block w-100"
                                          alt="random image">
                                     <div class="carousel-caption d-none d-md-block bg-secondary">
@@ -105,7 +98,7 @@
                                         <p>This will be cool, I bet.</p>
                                     </div>
                                 </div>
-                                <div class="carousel-item" id="personal2">
+                                <div class="carousel-item" id="personal-2">
                                     <img src="https://dummyimage.com/1080x515/09f/fff.png" class="d-block w-100"
                                          alt="random image">
                                     <div class="carousel-caption d-none d-md-block bg-secondary">
@@ -113,7 +106,7 @@
                                         <p>This will be really cool, probably.</p>
                                     </div>
                                 </div>
-                                <div class="carousel-item" id="personal3">
+                                <div class="carousel-item" id="personal-3">
                                     <img src="https://dummyimage.com/1080x515/ef/fff.png" class="d-block w-100"
                                          alt="random image">
                                     <div class="carousel-caption d-none d-md-block bg-secondary">
@@ -122,11 +115,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <a class="carousel-control-prev" id="personalPrev" href="#carouselPersonal" role="button">
+                            <a class="carousel-control-prev" id="personal-prev" href="#carousel-personal" role="button">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>
                             </a>
-                            <a class="carousel-control-next" id="personalNext" href="#carouselPersonal" role="button">
+                            <a class="carousel-control-next" id="personal-next" href="#carousel-personal" role="button">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
                             </a>
@@ -152,6 +145,7 @@
                 <li><a class="text-muted" href="index.html">About</a></li>
                 <li><a class="text-muted" href="#">Portfolio</a></li>
                 <li><a class="text-muted" href="contact.html">Contact</a></li>
+                <li><a class="text-muted" href="tracking.html">Tracking</a></li>
             </ul>
         </div>
     </footer>
