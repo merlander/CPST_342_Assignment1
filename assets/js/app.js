@@ -49,11 +49,11 @@ window.addEventListener('load', () => {
         const closeButtons = document.getElementsByClassName('close-alert');
         const modalClose = document.getElementById('modal-close-btn');
         Array.from(closeButtons).forEach(function (element) {
-            element.addEventListener('click', e => {
+            element.addEventListener('click', () => {
                 element.parentElement.classList.add('d-none');
             });
         });
-        modalClose.addEventListener('click', e => {
+        modalClose.addEventListener('click', () => {
             $('#confirm-email').modal('hide');
         });
     };
@@ -89,7 +89,8 @@ window.addEventListener('load', () => {
                 .tooltip('show');
             valid = false;
         }
-        return valid;
+            return valid;
+
     };
 
     const clearTracking = () => {
@@ -99,7 +100,7 @@ window.addEventListener('load', () => {
         table.classList.add('d-none');
         button.classList.add('d-none');
         clearDiv.classList.remove('d-none');
-    }
+    };
 
     if (page === '/CPST_342_Assignments/portfolio.html') {
         $('.carousel').carousel();
@@ -207,7 +208,7 @@ window.addEventListener('load', () => {
             */
         });
 
-        document.getElementById('cancel-btn').addEventListener('click', e => {
+        document.getElementById('cancel-btn').addEventListener('click', () => {
             $('#confirm-email').modal('hide');
             document.getElementById('cancel-alert').classList.remove("d-none");
         });
@@ -221,25 +222,25 @@ window.addEventListener('load', () => {
             }
         });
 
-        document.getElementById('send-btn').addEventListener('click', e => {
+        document.getElementById('send-btn').addEventListener('click', () => {
             if (checkValidation() === true) {
                 $('#confirm-email').modal('show');
             }
         });
 
-        document.getElementById('first-name').addEventListener('keyup', e => {
+        document.getElementById('first-name').addEventListener('keyup', () => {
             let element = document.getElementById('first-name');
             element.style.backgroundColor = 'white';
             element.style.border = 'none';
         });
 
-        document.getElementById('last-name').addEventListener('keyup', e => {
+        document.getElementById('last-name').addEventListener('keyup', () => {
             let element = document.getElementById('last-name');
             element.style.backgroundColor = 'white';
             element.style.border = 'none';
         });
 
-        document.getElementById('email').addEventListener('keyup', e => {
+        document.getElementById('email').addEventListener('keyup', () => {
             let element = document.getElementById('email');
             element.style.backgroundColor = 'white';
             element.style.border = 'none';
@@ -283,7 +284,7 @@ window.addEventListener('load', () => {
 
         });
 
-        document.getElementById('clear-btn').addEventListener('click', e => {
+        document.getElementById('clear-btn').addEventListener('click', () => {
             localStorage.clear();
             clearTracking();
         });
