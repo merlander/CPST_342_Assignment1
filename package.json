@@ -23,7 +23,7 @@
     "i": "^0.3.6",
     "moment-locales-webpack-plugin": "^1.1.2",
     "node-sass": "^4.13.0",
-    "npm": "^6.13.1",
+    "npm": "^6.13.4",
     "path": "^0.12.7",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^8.0.0",
