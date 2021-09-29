@@ -20,7 +20,7 @@
     "gulp-csso": "^4.0.1",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
-    "i": "^0.3.6",
+    "i": "^0.3.7",
     "moment-locales-webpack-plugin": "^1.1.2",
     "node-sass": "^4.13.0",
     "npm": "^6.13.1",
